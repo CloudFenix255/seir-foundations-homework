@@ -1,8 +1,15 @@
-SEIR Foundations - Week 2
+SEIR Foundations — Week 2
 
 Student: Sid Owsley
 GitHub: CloudFenix255
-Study Group: To be confirmed
-Spotter: To be confirmed
 
-Group verification: Pending
+Study Group:
+- Alex Petit
+- Zac Smith
+- Sid Owsley
+
+My Spotter: Alex Petit
+Person I Am Spotting: Zac Smith
+
+Group membership: Confirmed
+Spotter learning points: To be documented in the Week 3 spotter report.
