@@ -2,36 +2,33 @@ SEIR Foundations — Week 3 Spotter Report
 
 Student: Sid Owsley
 GitHub: CloudFenix255
-
-Study Group:
-- Alex Petit
-- Zac Smith
-- Sid Owsley
+Assignment: Module 1, Lesson 1
 
 My Spotter: Alex Petit
-Person I Am Spotting: Zac Smith
+Person I Spot For: Zac Smith
 
 SECTION 1 — MY SPOTTER: ALEX PETIT
 
 Five learning points from our study-group work:
 
-1. Pending confirmation
-2. Pending confirmation
-3. Pending confirmation
-4. Pending confirmation
-5. Pending confirmation
+1. The EC2 identification line includes the username, local date and time, instance ID, and UTC boot time. We also covered the difference between EDT and EST.
+2. Each of the seven required lab runs needs a new EC2 instance, with no more than three lab-run screenshots per local date.
+3. The Balerica Bank application starts from /opt/balerica-bank after activating the Python virtual environment. The screenshot must show Uvicorn's "Application startup complete." message.
+4. The EC2 public DNS hostname identifies the SSH destination, while the instance ID identifies the AWS resource.
+5. COBOL return codes indicate different outcomes: 0 for success, 4 for account not found, 8 for business rejection, and 12 for environment failure.
 
-SECTION 2 — PERSON I AM SPOTTING: ZAC SMITH
+SECTION 2 — PERSON I SPOT FOR: ZAC SMITH
 
 Five learning points from our study-group work:
 
-1. Pending confirmation
-2. Pending confirmation
-3. Pending confirmation
-4. Pending confirmation
-5. Pending confirmation
+1. Connecting to EC2 using SSH keys and public addresses, including troubleshooting connection problems.
+2. Cloning a GitHub repository onto EC2 and locating the downloaded project files.
+3. Manually installing the Balerica Legacy Bank application and verifying the installation.
+4. Starting FastAPI using a Python virtual environment and Uvicorn, including troubleshooting port 8000.
+5. Collecting EC2 evidence, recording instance IDs and boot times, capturing startup screenshots, and cleaning up AWS resources.
 
-STATUS
+SUMMARY
 
-Study-group members and spotter assignments confirmed.
-Learning points will be added after checking with Alex and Zac.
+Working with Alex and Zac helped reinforce the practical steps involved in deploying and troubleshooting the Legacy Bank application on AWS. We covered EC2 connectivity, application installation, API startup, and documenting our lab work.
+
+The launch-template-versus-AMI topic was studied separately and is not included as shared learning with Zac.
