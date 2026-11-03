@@ -109,3 +109,106 @@ The seven required manual deployments will be recorded separately with their act
 ## COBOL Practice
 
 Return codes 0, 4, 8, and 12, along with fixed-width ledger decoding, will be documented after completing and verifying each test.
+
+## COBOL Practice — November 3, 2026
+
+**Instance ID:** `i-0fce237d4cf96e52e`  
+**Environment:** Amazon Linux 2023  
+**Working directory:** `/opt/balerica-bank`
+
+### Return Code 0 — Successful Account Lookup
+
+Command:
+`./cobol/bin/account_lookup 100001`
+
+Output:
+```text
+ACCOUNT=100001
+NAME=Alice Johnson
+STATUS=ACTIVE
+BALANCE=4975.00
+CURRENCY=USD
+```
+
+Exit code: `0`
+
+### Return Code 4 — Account Not Found
+
+Command:
+`./cobol/bin/account_lookup 999999`
+
+Output:
+```text
+ERROR=ACCOUNT NOT FOUND
+```
+
+Exit code: `4`
+
+### Return Code 8 — Business Rejection
+
+Command:
+`./cobol/bin/payment_post TXN-SO-0008 100001 0.00 USD TEST-RC8`
+
+Output:
+```text
+TXN=TXN-SO-0008
+ACCOUNT=100001
+AMOUNT=0.00
+CURRENCY=USD
+STATUS=REJECTED
+REASON=AMOUNT MUST BE GREATER THAN ZERO
+```
+
+Exit code: `8`
+
+The payment was rejected because the amount was zero. This confirmed that the COBOL application enforced its business rules.
+
+### Return Code 12 — Environment Failure
+
+Commands:
+```bash
+cd /tmp
+/opt/balerica-bank/cobol/bin/account_lookup 100001
+echo $?
+```
+
+Output:
+```text
+ERROR=CANNOT OPEN data/accounts.dat
+FILE-STATUS=35
+```
+
+Exit code: `12`
+
+The program couldn't locate the expected account data because I ran it from the wrong directory.
+
+### Fixed-Width Ledger Decoding
+
+I examined `data/accounts.dat` using Linux commands to identify the character positions of the account fields.
+
+| Field | Positions | Value |
+|---|---|---|
+| Account number | 1–6 | 100001 |
+| Account holder | 7–26 | Alice Johnson |
+| Account status | 37–42 | ACTIVE |
+| Balance | 45–56 | 000000497500 |
+
+The account balance was stored as 497,500 cents, which equals **$4,975.00 USD**.
+
+I used:
+
+```bash
+head -n 1 data/accounts.dat | cut -c45-56
+```
+
+And converted it into dollars using:
+
+```bash
+head -n 1 data/accounts.dat | cut -c45-56 | awk '{printf "$%.2f\n", $1/100}'
+```
+
+### What I Learned
+
+I learned how COBOL uses return codes to distinguish between successful operations, missing accounts, business-rule violations, and environment problems. I also learned how to decode fixed-width ledger records using `cut -c`, including how to account for blank spaces within fields.
+
+The rejected transaction `TXN-SO-0008` did not represent a successful payment. Alice Johnson's verified account balance remained $4,975.00 after the test.
