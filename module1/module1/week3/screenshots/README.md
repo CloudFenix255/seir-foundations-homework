@@ -41,3 +41,25 @@ Screenshots documenting the deployment and tests are included in this folder:
 ## Conclusion
 
 I successfully deployed the Legacy Bank application on AWS EC2 and verified that the COBOL programs and FastAPI endpoints were functioning together. The account lookup, API status, payment processing, and transaction history tests were completed successfully.
+
+
+## Run 2 — Verification Results
+
+I launched a second EC2 instance, SEIR-Week3-Run2, and verified the Balerica Legacy Bank application.
+
+The FastAPI server initially stopped when my SSH connection was interrupted. I reconnected to EC2, restarted Uvicorn, and repeated the API tests.
+
+| Test | Result |
+| --- | --- |
+| FastAPI `/status` | Passed — HTTP 200, API online |
+| Account lookup `/accounts/100001` | Passed — Alice Johnson, ACTIVE, $4,975.00 |
+| Transaction history `/transactions` | Passed — 1 POSTED transaction |
+| Payment record | $25.00 USD, reference TXN0003 |
+
+### Run 2 Evidence
+
+[Run 2 Transaction History](Week3_Run2_TransactionHistory.jpg)
+
+### What I Learned
+
+I learned how to troubleshoot a FastAPI application on EC2, reconnect after an SSH connection was interrupted, restart Uvicorn, and verify API endpoints using curl.
