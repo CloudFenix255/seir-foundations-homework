@@ -63,3 +63,20 @@ The FastAPI server initially stopped when my SSH connection was interrupted. I r
 ### What I Learned
 
 I learned how to troubleshoot a FastAPI application on EC2, reconnect after an SSH connection was interrupted, restart Uvicorn, and verify API endpoints using curl.
+
+## Week 3 — Final Verification (Runs 1–7)
+
+I completed all seven deployment and verification runs for the Balerica Legacy Bank application on AWS EC2.
+
+During the runs, I verified that:
+
+- The FastAPI application was running and responding to requests.
+- The GnuCOBOL banking application successfully retrieved account information.
+- Account 100001 (Alice Johnson) was active with an initial balance of $5,000.00.
+- A $25.00 USD payment was successfully processed with status POSTED and approval APPROVED.
+- The account balance was updated to $4,975.00.
+- The transaction history recorded the payment successfully.
+
+For Run 7, the payment reference was `RUN7-TXN001`. I saved the API status, account lookup, and transaction history screenshots as evidence in the `screenshots` folder.
+
+**Result:** All seven runs were completed successfully, and the verification screenshots were uploaded to GitHub.
